@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Riphah GradeMatrix | SGPA & CGPA Calculator</title>
+    <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/x-icon">
+
+    <!-- Primary Page SEO Meta Tags -->
+    <meta name="title" content="Riphah GradeMatrix | SGPA & CGPA Calculator">
+    <meta name="description" content="An independent, SGPA and CGPA calculation system designed for university students to track academic performance, semester grades, and credit hours seamlessly.">
+    <meta name="keywords" content="Riphah GradeMatrix, SGPA Calculator, CGPA Calculator, Riphah International University, GPA Calculator, Academic Grade Tracker, University Tools">
+
+    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mavi-cyber.github.io/Riphah-GradeMatrix/">
+    <meta property="og:title" content="Riphah GradeMatrix | SGPA & CGPA Calculator">
+    <meta property="og:description" content="Calculate your SGPA, track cumulative CGPA, and generate academic report summaries instantly.">
+    <meta property="og:image" content="https://mavi-cyber.github.io/Riphah-GradeMatrix/assets/imgs/GradeMatrix-Logo.png">
+
+    <!-- Stylesheets & Theme Color -->
+    <meta name="theme-color" content="#ffa726">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="no-print">
+    <div class="header-inner">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="assets/imgs/GradeMatrix-Logo.png" alt="Riphah GradeMatrix Logo" style="height: 60px; width: auto; object-fit: contain;">
+            
+            <div>
+                <h1>Riphah GradeMatrix</h1>
+                <p>SGPA & CGPA Calculation System</p>
+            </div>
+        </div>
+        <div>
+            <a href="about.html" class="btn btn-secondary" style="text-decoration: none; font-size: 13px; padding: 8px 16px;">About & Policies -&gt;</a>
+        </div>
+    </div>
+</header>
+
+<div class="main-layout">
+    <!-- Left Column: Calculators -->
+    <div class="calculator-column">
+        <!-- Current Semester Calculator -->
+        <div class="card">
+            <h2>Current Semester Courses</h2>
+            
+            <div style="margin-bottom: 15px;">
+                <label for="currentSemTitle" style="font-weight: 600; font-size: 14px; color: var(--primary-dark); display: block; margin-bottom: 5px;">Semester #: <span style="color: var(--danger);">*</span></label>
+                <input type="text" id="currentSemTitle" placeholder="e.g. Semester 5 or Fall 2026" style="max-width: 300px;" oninput="triggerRecalculation()">
+            </div>
+
+            <table id="courseTable">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Course Name</th>
+                        <th style="width: 15%;">Credit Hours</th>
+                        <th style="width: 20%;">Marks</th>
+                        <th style="width: 20%;">Grade</th>
+                        <th style="width: 15%;" class="no-print">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="courseRows">
+                    <!-- Dynamic Rows inserted via JS -->
+                </tbody>
+            </table>
+
+            <div class="no-print" style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn" onclick="addCourseRow()">Add Course</button>
+                <button class="btn btn-success" onclick="saveCurrentSemesterToHistory()" style="background-color: #2e7d32;">Save to CGPA History</button>
+                <button class="btn btn-secondary" onclick="clearCurrentSemester()">Clear Rows</button>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-box">
+                    <h3>Calculated SGPA</h3>
+                    <p class="result-value" id="sgpaDisplay">0.00</p>
+                </div>
+                <div class="result-box">
+                    <h3>Total Quality Points</h3>
+                    <p class="result-value" id="qpDisplay">0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cumulative CGPA Tracker -->
+        <div class="card">
+            <h2>Cumulative Record (CGPA)</h2>
+            <p style="color: var(--text-muted); font-size: 14px;">Add your previous semesters' GPA and total credits below or save directly from above. Your active semester courses are automatically factored into your overall CGPA.</p>
+            
+            <div class="no-print" style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                <input type="text" id="pastSemName" placeholder="Semester Name (e.g. Semester 1)" style="flex: 2; min-width: 150px;">
+                <input type="number" id="pastSemCredits" placeholder="Total Credits (e.g. 18)" min="1" style="flex: 1; min-width: 100px;">
+                <input type="number" id="pastSemGpa" placeholder="SGPA (e.g. 3.45)" min="0" max="4" step="0.01" style="flex: 1; min-width: 100px;">
+                <button class="btn" style="margin-top:0; background-color: #1565c0;" onclick="addManualSemester()">Add Semester</button>
+            </div>
+
+            <div class="semester-history">
+                <table id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Total Credits</th>
+                            <th>Semester SGPA</th>
+                            <th class="no-print">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyRows">
+                        <tr>
+                            <td colspan="4" style="color: var(--text-muted);">No semesters added yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="results-grid" style="margin-top: 20px;">
+                <div class="result-box" style="border-left-color: #1565c0;">
+                    <h3>Overall CGPA</h3>
+                    <p class="result-value" id="cgpaDisplay" style="color: #1565c0;">0.00</p>
+                </div>
+                <div class="result-box" style="border-left-color: #1565c0;">
+                    <h3>Total Earned Credits</h3>
+                    <p class="result-value" id="totalCreditsDisplay" style="color: #1565c0;">0</p>
+                </div>
+            </div>
+            <div class="no-print">
+                <button class="btn btn-danger" style="margin-top: 20px;" onclick="resetAllData()">Reset All Records</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Student Details & PDF Report Preview Aside -->
+    <aside class="sidebar-column">
+        <div class="card preview-card">
+            <h2>Academic Summary & PDF</h2>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 15px;" class="no-print">Fill in your details to generate grade report form.</p>
+
+            <div class="student-form no-print">
+                <div class="form-group">
+                    <label>Student Name:</label>
+                    <input type="text" id="studentName" placeholder="e.g. Muhammad Ali" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>SAP ID / Roll No:</label>
+                    <input type="text" id="studentSap" placeholder="e.g. 70123456" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Program / Department:</label>
+                    <input type="text" id="studentProgram" placeholder="e.g. BS Cyber Security" oninput="updatePreview()">
+                </div>
+            </div>
+
+            <hr style="border:0; border-top:1px solid var(--border); margin: 20px 0;">
+
+            <!-- Live Printable Preview Box -->
+            <div class="preview-box" id="printPreviewBox">
+                <div class="preview-header">
+                    <h3>Riphah GradeMatrix</h3>
+                    <span>Grade Report Form</span>
+                </div>
+                <div class="preview-details">
+                    <p><strong>Name:</strong> <span id="prevName">Not Provided</span></p>
+                    <p><strong>SAP ID:</strong> <span id="prevSap">Not Provided</span></p>
+                    <p><strong>Program:</strong> <span id="prevProgram">Not Provided</span></p>
+                </div>
+
+                <div class="preview-cgpa-badge">
+                    <span id="badgeLabel">Cumulative CGPA</span>
+                    <h2 id="prevCgpa">0.00</h2>
+                </div>
+
+                <!-- Printable Report Transcript Breakdown Section -->
+                <div class="print-transcript-section" style="margin-top: 15px;">
+                    <h4 style="font-size: 13px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 4px; margin-bottom: 8px;">Semester Summary History</h4>
+                    <table id="printTranscriptTable" style="width: 100%; font-size: 11px;">
+                        <thead>
+                            <tr>
+                                <th>Semester</th>
+                                <th>Credits</th>
+                                <th>SGPA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="printTranscriptRows">
+                            <tr><td colspan="3">No records recorded.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button class="btn no-print" style="width: 100%; background-color: var(--accent); color: #000; margin-top: 20px; font-weight: bold;" onclick="generatePDF()">
+                Generate & Download PDF
+            </button>
+        </div>
+    </aside>
+</div>
+
+<!-- Reusable Custom Modal System -->
+<div id="customModal" class="modal-overlay no-print" style="display: none;">
+    <div class="modal-content">
+        <div id="modalIcon" class="modal-icon success-icon">&#10003;</div>
+        <h3 id="modalTitle">Success</h3>
+        <p id="modalMessage">Message goes here...</p>
+        <div id="modalButtons" class="modal-buttons">
+            <button class="btn" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+</div>
+
+<footer class="no-print site-footer">
+    <div class="footer-container">
+        <div class="footer-main">
+            <p class="footer-brand">
+                &copy; 2026 <strong>Riphah GradeMatrix</strong> &bull; SGPA & CGPA Calculation System
+            </p>
+            <div class="footer-actions">
+                <p class="footer-author">
+                    Developed by <strong>Mavi</strong><br> 
+                    <a href="https://github.com/mavi-cyber/Riphah-GradeMatrix" target="_blank" class="github-pill">
+                        <img src="assets/btns/github-profile-link.png" alt="GitHub"> @mavi-cyber
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-disclaimer">
+                Disclaimer: This independent estimation tool assists students in tracking SGPA and CGPA in accordance with <abbr title="Riphah International University">RIU</abbr> academic regulations. <br> For official records and credit mapping, always consult the Student Services Department.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
