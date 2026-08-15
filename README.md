@@ -9,7 +9,6 @@ An independent, client-side SGPA and CGPA calculation system designed for univer
 * **Cumulative CGPA Tracker**: Easily track past and active semester records with persistent local storage (`localStorage`). Save active semester courses directly into your cumulative history with a single click.
 * **Live Report Preview & PDF Export**: Fill out student details (Name, SAP ID, Program) to instantly generate a printable academic grade report form and export it as a PDF.
 * **Institutional Grading Standards**: Integrated reference guide for RIU grading policy (from 90+ A+ down to F, including special grades like I, W, and R).
-* **Student Handbook Access**: Quick access and downloadable reference to the revised 2024 RIU Student Handbook complete with its SHA-256 integrity checksum.
 * **Responsive Dark-Themed UI**: Clean, modern dark mode layout tailored for readability across desktop and mobile devices.
 ---
 
@@ -28,8 +27,7 @@ Riphah-GradeMatrix/
 ├── script.js        # Core calculation logic, grade mapping, and storage management
 └── assets/
     ├── imgs/        # Logo and favicons
-    ├── btns/        # UI icons (e.g., GitHub pill link)
-    └── pdfs/        # Official RIU Student Handbook (2024 Revised)
+    └── btns/        # UI icons (e.g., GitHub pill link)
 
 ```
 ---
