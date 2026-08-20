@@ -59,7 +59,7 @@ Contributions, feature requests, and bug reports are welcome! If you would like 
 ---
 
 ## Licensing
-Distributed under the **MIT License**. See [LICENSE](LICENSE) or repository settings for more information.
+Distributed under the **GNU General Public License v3.0 (GPLv3)**. See [LICENSE](LICENSE) or repository settings for more information.
 
 ---
 
