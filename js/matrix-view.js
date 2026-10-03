@@ -387,7 +387,9 @@ function openCourseEditor(ctx, semester, course) {
         result.textContent = outcomeText(ctx, entry);
     });
 
-    if (!course.name) name.focus();
+    // On a touch screen focusing would throw the keyboard up over the editor straight away;
+    // there the name field is filled in when the student taps it.
+    if (!course.name && !window.matchMedia('(pointer: coarse)').matches) name.focus();
 }
 
 // Adds a linked retake in a later semester and opens it.
@@ -491,6 +493,21 @@ function paint(course) {
 
 // --- Wiring ---
 
+// Tells the stylesheet how much of the screen the on-screen keyboard is covering,
+// so the editor can sit above it and stay scrollable.
+function trackKeyboard() {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    const update = () => {
+        const keyboard = Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop);
+        document.documentElement.style.setProperty('--keyboard', `${keyboard}px`);
+        document.documentElement.style.setProperty('--visible-height', `${viewport.height}px`);
+    };
+    viewport.addEventListener('resize', update);
+    viewport.addEventListener('scroll', update);
+    update();
+}
+
 function addSemester(ctx, semester) {
     ctx.state.semesters.push(semester);
     ctx.commit();
@@ -499,6 +516,7 @@ function addSemester(ctx, semester) {
 }
 
 export function initMatrixView(ctx) {
+    trackKeyboard();
     $('paintChips').replaceChildren(...PICKABLE_GRADES.map(letter => {
         const chip = el('button', { className: 'chip', textContent: letter });
         chip.dataset.value = letter;

@@ -1013,9 +1013,10 @@ body.editing .paintbar {
     transform: translateX(-50%);
     width: min(560px, calc(100% - 20px));
     max-height: 70vh;
-    max-height: 70dvh;
+    max-height: min(70dvh, calc(var(--visible-height, 100dvh) - 80px));
     overflow-y: auto;
     overscroll-behavior: contain;
+    touch-action: pan-y;
     display: grid;
     gap: 12px;
     padding: 16px;
@@ -2014,11 +2015,12 @@ body.drawer-open {
     /* The editor becomes a bottom sheet across the full width. */
     .editor {
         left: 0;
-        bottom: 0;
+        /* Lifted by the height of the on-screen keyboard, and never taller than what is left. */
+        bottom: var(--keyboard, 0px);
         width: 100%;
         transform: none;
         max-height: 62vh;
-        max-height: 62dvh;
+        max-height: min(62dvh, calc(var(--visible-height, 100dvh) - 56px));
         padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
         border-width: 2px 0 0;
         border-radius: var(--radius) var(--radius) 0 0;
