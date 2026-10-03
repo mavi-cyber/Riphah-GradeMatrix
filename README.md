@@ -31,6 +31,8 @@ The calculations follow the RIU Academic Regulations for Undergraduate Programs,
 **Throughout**
 * **Institutional Grading Standards**: Integrated reference guide for RIU grading policy (from 90+ A+ down to F, including special grades like I, W, and R).
 * **Light and Dark Themes**: Follows your system theme, with a toggle in the header.
+* **Installable and Offline**: Works as a Progressive Web App. On Android, open the site in Chrome and choose "Install app" to add it to your home screen; it then opens full screen and keeps working without a connection.
+* **Built for Phones**: The matrix scrolls sideways by semester, and the editor opens as a bottom sheet within thumb reach.
 ---
 
 ## Tech Stack
@@ -46,6 +48,8 @@ Riphah-GradeMatrix/
 ├── index.html       # Main SGPA & CGPA Calculator interface
 ├── about.html       # Grading policy: the scale, a try-it slider, and how SGPA/CGPA are worked out
 ├── style.css        # Theme tokens, layout, and print styling
+├── manifest.webmanifest  # App name, colours and icons for installing
+├── sw.js            # Service worker: offline copy of the app
 ├── js/
 │   ├── app.js             # Entry point: state, headline number, tool panels
 │   ├── grading.js         # RIU grade table: marks to letter and grade points (no DOM)
@@ -61,7 +65,8 @@ Riphah-GradeMatrix/
 │   ├── dom.js             # Small DOM helpers
 │   ├── modal.js           # Confirm dialog
 │   ├── toast.js           # Short messages with optional Undo
-│   └── theme.js           # Light/dark theme toggle
+│   ├── theme.js           # Light/dark theme toggle
+│   └── pwa.js             # Registers the service worker, Install button
 ├── tests/           # Unit tests for grading, transcript, planner and storage
 ├── package.json     # Marks the project as ES modules and defines `npm test`
 └── assets/

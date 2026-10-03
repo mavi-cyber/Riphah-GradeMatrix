@@ -98,6 +98,12 @@
     box-sizing: border-box;
 }
 
+/* No double-tap zoom delay or grey flash on touch screens. */
+button, a, input, select, summary, label {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
     margin: 0;
     font-family: var(--font);
@@ -751,9 +757,11 @@ input.invalid {
     animation: cell-in 0.25s ease backwards;
 }
 
-.cell:hover {
-    transform: translateY(-2px) rotate(-0.6deg);
-    box-shadow: 0 5px 0 var(--press);
+@media (hover: hover) {
+    .cell:hover {
+        transform: translateY(-2px) rotate(-0.6deg);
+        box-shadow: 0 5px 0 var(--press);
+    }
 }
 
 .cell:active {
@@ -991,7 +999,9 @@ body.editing .paintbar {
     transform: translateX(-50%);
     width: min(560px, calc(100% - 20px));
     max-height: 70vh;
+    max-height: 70dvh;
     overflow-y: auto;
+    overscroll-behavior: contain;
     display: grid;
     gap: 12px;
     padding: 16px;
@@ -1064,6 +1074,26 @@ select.editor-select {
     display: none;
 }
 
+.editor-more {
+    display: grid;
+    gap: 12px;
+}
+
+.editor-more summary {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.editor-more[open] summary {
+    margin-bottom: 12px;
+}
+
+.editor-more .editor-row + .editor-row {
+    margin-top: 12px;
+}
+
 .editor-foot {
     display: flex;
     flex-wrap: wrap;
@@ -1120,6 +1150,7 @@ body.editing main {
     z-index: 55;
     width: min(880px, 100%);
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 0 20px 28px;
     background: var(--bg);
     border-left: 2px solid var(--border);
@@ -1627,7 +1658,7 @@ body.drawer-open {
     animation: none;
 }
 
-.cell-static:hover, .cell-static:active {
+.cell.cell-static:hover, .cell.cell-static:active {
     transform: none;
     box-shadow: 0 3px 0 var(--press);
 }
@@ -1962,6 +1993,67 @@ body.drawer-open {
         width: 100%;
     }
 
+    /* The editor becomes a bottom sheet across the full width. */
+    .editor {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        transform: none;
+        max-height: 62vh;
+        max-height: 62dvh;
+        padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
+        border-width: 2px 0 0;
+        border-radius: var(--radius) var(--radius) 0 0;
+        animation-name: sheet-in;
+    }
+
+    .editor-row {
+        gap: 6px 8px;
+    }
+
+    /* The verdict sits right under the title, where it stays in view without scrolling. */
+    .editor-head {
+        order: -2;
+    }
+
+    .editor-result {
+        order: -1;
+    }
+
+    input.editor-number {
+        width: 62px;
+    }
+
+    input.editor-number.wide {
+        width: 140px;
+    }
+
+    .paintbar {
+        bottom: calc(8px + env(safe-area-inset-bottom));
+        padding: 10px 12px;
+    }
+
+    .paint-hint {
+        display: none;
+    }
+
+    body.painting .paint-hint {
+        display: block;
+    }
+
+    /* 16px inputs stop mobile browsers zooming the page when a field is focused. */
+    input[type="text"], input[type="number"], select {
+        font-size: 16px;
+    }
+
+    .topbar-inner {
+        gap: 6px;
+    }
+
+    .install-btn {
+        padding: 6px 10px;
+    }
+
     .try-box, .retake-demo {
         grid-template-columns: 1fr;
         padding: 16px;
@@ -1985,6 +2077,35 @@ body.drawer-open {
 
     .sheet-date {
         grid-column: 1 / -1;
+    }
+}
+
+@keyframes sheet-in {
+    from { opacity: 0; transform: translateY(24px); }
+}
+
+@media (max-width: 430px) {
+    .brand-text {
+        display: none;
+    }
+
+    .hero-number {
+        letter-spacing: -3px;
+    }
+
+    .col {
+        width: 128px;
+    }
+}
+
+/* Installed app: keep clear of the status bar and gesture area. */
+@media (display-mode: standalone) {
+    .topbar {
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .install-btn {
+        display: none;
     }
 }
 

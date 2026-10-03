@@ -356,8 +356,13 @@ function openCourseEditor(ctx, semester, course) {
         editorRow('Credits', creditChips, creditsInput),
         editorRow('Marks', range, marksInput),
         editorRow('Grade', gradeChips),
-        editorRow('Type', kindChips),
-        retakeRow,
+        // The less common settings stay folded away so the editor leaves room for the grid,
+        // and open by themselves when this course already uses one of them.
+        el('details', { className: 'editor-more', open: course.kind !== 'credit' || Boolean(course.retakeOf) }, [
+            el('summary', { textContent: 'More: course type and retake' }),
+            editorRow('Type', kindChips),
+            retakeRow
+        ]),
         el('div', { className: 'editor-foot' }, [retakeLater, remove]),
         result
     ], () => {

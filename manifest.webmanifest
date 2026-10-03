@@ -1,0 +1,17 @@
+{
+    "name": "Riphah GradeMatrix",
+    "short_name": "GradeMatrix",
+    "description": "SGPA and CGPA calculator for Riphah International University students.",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#0b1020",
+    "theme_color": "#0f172a",
+    "categories": ["education", "productivity"],
+    "icons": [
+        { "src": "assets/imgs/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "assets/imgs/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+        { "src": "assets/imgs/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    ]
+}
