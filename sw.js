@@ -54,7 +54,9 @@ self.addEventListener('fetch', event => {
 
     event.respondWith(caches.open(CACHE).then(async cache => {
         try {
-            const response = await fetch(request);
+            // 'no-cache' makes the browser check with the server every time, so a new
+            // page never ends up paired with an old stylesheet or script.
+            const response = await fetch(request.url, { cache: 'no-cache' });
             if (response.ok) cache.put(request, response.clone());
             return response;
         } catch {
