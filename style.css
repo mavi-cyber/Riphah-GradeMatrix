@@ -2098,6 +2098,18 @@ body.drawer-open {
     }
 }
 
+/* Touch screens scroll by swiping, so the scroll bars are only clutter there.
+   Mouse users keep them, since they may have no other way to scroll sideways. */
+@media (pointer: coarse) {
+    * {
+        scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 @keyframes sheet-in {
     from { opacity: 0; transform: translateY(24px); }
 }
