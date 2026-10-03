@@ -105,6 +105,8 @@ button, a, input, select, summary, label {
 }
 
 body {
+    /* A safety net: nothing may push the page sideways on a phone. */
+    overflow-x: clip;
     margin: 0;
     font-family: var(--font);
     font-size: 15px;
@@ -949,6 +951,8 @@ body.painting .cell:not(.cell-block), body.painting .add-cell {
     bottom: 12px;
     z-index: 40;
     display: grid;
+    /* Without this the row of grade chips forces the bar, and the page, wider than a phone. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 6px;
     padding: 12px 14px;
     border: 2px solid var(--border);
@@ -969,6 +973,7 @@ body.editing .paintbar {
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
 }
 
 .paint-top strong {
@@ -2084,10 +2089,35 @@ body.drawer-open {
     from { opacity: 0; transform: translateY(24px); }
 }
 
-@media (max-width: 430px) {
-    .brand-text {
-        display: none;
+/* Narrow phones: the tool buttons drop to their own row under the logo,
+   so the header can never be wider than the screen. */
+@media (max-width: 520px) {
+    .topbar-inner {
+        flex-wrap: wrap;
+        row-gap: 0;
+        min-height: 0;
+        padding-top: 8px;
     }
+
+    .tabs {
+        order: 3;
+        flex: 1 0 100%;
+        justify-content: space-between;
+        padding: 4px 0 8px;
+    }
+
+    .tab {
+        flex: 1;
+        text-align: center;
+    }
+
+    .brand img {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+@media (max-width: 430px) {
 
     .hero-number {
         letter-spacing: -3px;
