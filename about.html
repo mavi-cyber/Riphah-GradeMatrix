@@ -3,193 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riphah GradeMatrix | About</title>
 
+    <title>Riphah GradeMatrix | Grading Policy</title>
+    <link rel="icon" href="assets/imgs/logo.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="assets/imgs/favicon.png" type="image/png">
+    <meta name="description" content="The Riphah International University grading scale and how SGPA and CGPA are calculated.">
+
+    <meta name="theme-color" content="#0f172a">
+    <script src="js/theme.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="no-print">
-    <div class="header-inner">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <!-- Your Logo Image -->
-            <img src="assets/imgs/GradeMatrix-Logo.png" alt="Riphah GradeMatrix Logo" style="height: 60px; width: auto; object-fit: contain;">
-            
-            <div>
-                <h1>Riphah GradeMatrix</h1>
-                <p>SGPA & CGPA Calculation System</p>
-            </div>
+<header class="topbar no-print">
+    <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+            <img src="assets/imgs/logo.svg" width="40" height="40" alt="">
+            <span class="brand-text">
+                <strong>GradeMatrix</strong>
+                <small>Riphah SGPA & CGPA</small>
+            </span>
+        </a>
+        <div class="topnav">
+            <a href="index.html">&larr; Back to the matrix</a>
+            <button id="themeToggle" class="icon-btn" aria-label="Switch between light and dark theme" title="Switch theme">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+            </button>
         </div>
     </div>
 </header>
 
-    <div class="main-layout">
-        <!-- Main Content Column -->
-        <div class="content-column">
-            <div class="card">
-                <details>
-                    <summary style="cursor: pointer; font-size: 18px; font-weight: bold; color: var(--primary); outline: none;">
-                        Grading and Examination System
-                    </summary>
-                <p>Student performance is evaluated through quizzes, assignments, mid-term examinations, projects, and final examinations. The <abbr title="Riphah International University">RIU</abbr> University follows a Grade Point Average (GPA) system.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Marks Obtained</th>
-                            <th>Letter Grade</th>
-                            <th>Grade Point</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>90 & Above</td>
-                            <td>A+</td>
-                            <td>4.0</td>
-                        </tr>
-                        <tr>
-                            <td>80-89</td>
-                            <td>A</td>
-                            <td>4.0</td>
-                        </tr>
-                        <tr>
-                            <td>78-79</td>
-                            <td>A-</td>
-                            <td>3.8-3.9</td>
-                        </tr>
-                        <tr>
-                            <td>74-77</td>
-                            <td>B+</td>
-                            <td>3.4-3.7</td>
-                        </tr>
-                        <tr>
-                            <td>70-73</td>
-                            <td>B</td>
-                            <td>3-3.3</td>
-                        </tr>
-                        <tr>
-                            <td>68-69</td>
-                            <td>B-</td>
-                            <td>2.8-2.9</td>
-                        </tr>
-                        <tr>
-                            <td>64-67</td>
-                            <td>C+</td>
-                            <td>2.4-2.7</td>
-                        </tr>
-                        <tr>
-                            <td>60-63</td>
-                            <td>C</td>
-                            <td>2-2.3</td>
-                        </tr>
-                        <tr>
-                            <td>58-59</td>
-                            <td>C-</td>
-                            <td>1.8-1.9</td>
-                        </tr>
-                        <tr>
-                            <td>54-57</td>
-                            <td>D+</td>
-                            <td>1.4-1.7</td>
-                        </tr>
-                        <tr>
-                            <td>50-53</td>
-                            <td>D</td>
-                            <td>1-1.3</td>
-                        </tr>
-                        <tr>
-                            <td>Below 50</td>
-                            <td>F</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td>Incomplete</td>
-                            <td>I</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Withdrawal</td>
-                            <td>W</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Replaced Grade</td>
-                            <td>R</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p style="margin-top: 15px;"><span style="color: #ffa726;">*</span> To be increased by 0.1 for every 1 score above the minimum for the letter grade band.</p>
-                </details>
+<main class="container policy">
+
+    <section class="hero">
+        <div class="hero-main">
+            <span class="hero-label">Grading policy</span>
+            <h1 class="policy-title">How the numbers work</h1>
+            <span class="hero-mood">The rules this calculator follows, taken from the <abbr title="Riphah International University">RIU</abbr> Academic Regulations for Undergraduate Programs.</span>
         </div>
+    </section>
 
-            <div class="card">
-                <details>
-                    <summary style="cursor: pointer; font-size: 18px; font-weight: bold; color: var(--primary); outline: none;">
-                        How SGPA & CGPA are Calculated
-                    </summary>
-                    <p style="margin-top: 15px;">Student academic performance is evaluated through Semester Grade Point Average (SGPA) for a single semester and Cumulative Grade Point Average (CGPA) across all completed semesters. According to the university regulations, the calculation works as follows:</p>
-                    
-                    <h3 style="font-size: 15px; color: var(--primary); margin-top: 15px;">1. Semester Grade Point Average (SGPA)</h3>
-                    <p>SGPA is calculated by dividing the total quality points earned in a semester by the total semester credit hours (excluding courses with grades 'W' and 'I'):</p>
-                    <p style="background: #1e1f20; padding: 10px; border-radius: 6px; font-family: monospace; color: var(--primary);">
-                        SGPA = &sum; (Course Credit Hours &times; Grade Points Earned) / Total Semester Credit Hours
-                    </p>
+    <p class="intake-note"><strong>Which students this covers:</strong> the 5th Revision (2024, version 2.1) of the regulations applies to students admitted from the Fall 2023 intake onward. Earlier batches are governed by the regulations of their own intake, which may differ.</p>
 
-                    <h3 style="font-size: 15px; color: var(--primary); margin-top: 15px;">2. Cumulative Grade Point Average (CGPA)</h3>
-                    <p>CGPA reflects overall academic standing across all enrolled semesters, calculated by dividing total quality points by total credit hours taken (excluding 'W', 'I', and 'R' grades):</p>
-                    <p style="background: #1e1f20; padding: 10px; border-radius: 6px; font-family: monospace; color: var(--primary);">
-                        CGPA = &sum; (Course Credit Hours in all semesters &times; Grade Points Earned) / Total Credit Hours taken
-                    </p>
-
-                    <h3 style="font-size: 15px; color: var(--primary); margin-top: 15px;">3. Key Calculation Rules & Rounding</h3>
-                    <ul>
-                        <li><strong>Non-Credit Courses:</strong> Non-credit courses are completely excluded from both SGPA and CGPA calculations.</li>
-                        <li><strong>Marks Rounding:</strong> Marks for each course are rounded off only once after combining in-semester and final exam marks. If the first decimal is 5 or higher, it rounds up; if less than 5, it rounds down.</li>
-                        <li><strong>GPA Rounding:</strong> Both SGPA and CGPA are officially rounded off to <strong>two decimal places</strong> on transcripts and records.</li>
-                    </ul>
-                </details>
+    <!-- The scale, drawn in the same cells as the matrix -->
+    <section class="policy-block" aria-labelledby="scaleHeading">
+        <div class="view-head">
+            <div>
+                <h2 id="scaleHeading">The scale</h2>
+                <p>Student performance is evaluated through quizzes, assignments, mid-term examinations, projects, and final examinations. Your total marks land in one of these bands.</p>
             </div>
         </div>
+        <div class="scale-grid" id="scaleGrid"></div>
+        <p class="footnote">Within a band, the grade point increases by 0.1 for every 1 score above the minimum for the letter grade.</p>
 
-        <!-- Sidebar Column -->
-        <div class="sidebar-column">
-        <div class="sidebar-card">
-            <h2>Official Student Handbook <span class="version-badge">2024 Revised</span></h2>
-            <p>Review comprehensive guidelines regarding <strong>Riphah International University (RIU)</strong> campus facilities, academic regulations, student code of conduct, and fee policies directly through official channels.</p>
-            
-            <p>You can access the official documentation via the link below:</p>
+        <details class="table-view">
+            <summary>Show as table</summary>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Marks Obtained</th>
+                        <th>Letter Grade</th>
+                        <th>Grade Point</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>90 & Above</td><td>A+</td><td>4.0</td></tr>
+                    <tr><td>80-89</td><td>A</td><td>4.0</td></tr>
+                    <tr><td>78-79</td><td>A-</td><td>3.8-3.9</td></tr>
+                    <tr><td>74-77</td><td>B+</td><td>3.4-3.7</td></tr>
+                    <tr><td>70-73</td><td>B</td><td>3-3.3</td></tr>
+                    <tr><td>68-69</td><td>B-</td><td>2.8-2.9</td></tr>
+                    <tr><td>64-67</td><td>C+</td><td>2.4-2.7</td></tr>
+                    <tr><td>60-63</td><td>C</td><td>2-2.3</td></tr>
+                    <tr><td>58-59</td><td>C-</td><td>1.8-1.9</td></tr>
+                    <tr><td>54-57</td><td>D+</td><td>1.4-1.7</td></tr>
+                    <tr><td>50-53</td><td>D</td><td>1-1.3</td></tr>
+                    <tr><td>Below 50</td><td>F</td><td>0</td></tr>
+                    <tr><td>Incomplete</td><td>I</td><td>-</td></tr>
+                    <tr><td>Withdrawal</td><td>W</td><td>-</td></tr>
+                    <tr><td>Replaced Grade</td><td>R</td><td>-</td></tr>
+                </tbody>
+            </table>
+        </details>
+    </section>
+
+    <!-- Slide the marks and watch the grade point being worked out -->
+    <section class="try-box" aria-labelledby="tryHeading">
+        <div class="try-controls">
+            <h2 id="tryHeading">Try it</h2>
+            <p>Slide the marks and watch where they land.</p>
+            <div class="try-slider">
+                <input type="range" class="editor-range" id="tryMarks" min="0" max="100" step="0.5" value="77" aria-label="Marks">
+                <span class="try-number"><strong id="tryNumber">77</strong> marks</span>
+            </div>
+            <p class="editor-result" id="tryExplain"></p>
+        </div>
+        <div class="cell cell-static try-result" id="tryResult">
+            <span class="cell-letter" id="tryLetter">B+</span>
+            <span class="cell-name" id="tryPoints">3.7 grade points</span>
+        </div>
+    </section>
+
+    <!-- From courses to SGPA to CGPA -->
+    <section class="policy-block" aria-labelledby="calcHeading">
+        <div class="view-head">
+            <div>
+                <h2 id="calcHeading">How SGPA & CGPA are calculated</h2>
+                <p>Semester Grade Point Average (SGPA) covers a single semester. Cumulative Grade Point Average (CGPA) covers all completed semesters.</p>
+            </div>
+        </div>
+        <div class="steps">
+            <article class="step">
+                <span class="step-number">1</span>
+                <h3>Semester Grade Point Average (SGPA)</h3>
+                <p>Total quality points earned in a semester divided by the total semester credit hours (excluding courses with grades 'W' and 'I').</p>
+                <p class="formula">SGPA = &sum; (Course Credit Hours &times; Grade Points Earned) / Total Semester Credit Hours</p>
+            </article>
+            <article class="step">
+                <span class="step-number">2</span>
+                <h3>Cumulative Grade Point Average (CGPA)</h3>
+                <p>Overall academic standing across all enrolled semesters: total quality points divided by total credit hours taken (excluding 'W', 'I', and 'R' grades).</p>
+                <p class="formula">CGPA = &sum; (Course Credit Hours in all semesters &times; Grade Points Earned) / Total Credit Hours taken</p>
+            </article>
+            <article class="step">
+                <span class="step-number">3</span>
+                <h3>Key calculation rules & rounding</h3>
+                <ul>
+                    <li><strong>Non-Credit Courses:</strong> Non-credit courses are completely excluded from both SGPA and CGPA calculations.</li>
+                    <li><strong>Marks Rounding:</strong> Marks for each course are rounded off only once after combining in-semester and final exam marks. If the first decimal is 5 or higher, it rounds up; if less than 5, it rounds down.</li>
+                    <li><strong>GPA Rounding:</strong> Both SGPA and CGPA are officially rounded off to <strong>two decimal places</strong> on transcripts and records.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Repeating a course: watch R and W being decided -->
+    <section class="policy-block" aria-labelledby="retakeHeading">
+        <div class="view-head">
+            <div>
+                <h2 id="retakeHeading">Repeating a course and the R grade</h2>
+                <p>You may repeat a course in which you got D, F or W. Both attempts stay on the transcript, and the rule below decides which one counts.</p>
+            </div>
+        </div>
+        <div class="retake-demo">
+            <div class="retake-controls">
+                <div class="editor-row">
+                    <span class="editor-label">First try</span>
+                    <div class="chips" id="retakeOld"></div>
+                </div>
+                <div class="try-slider">
+                    <input type="range" class="editor-range" id="retakeMarks" min="0" max="100" step="1" value="74" aria-label="Marks in the retake">
+                    <span class="try-number"><strong id="retakeNumber">74</strong> in the retake</span>
+                </div>
+                <p class="editor-result" id="retakeExplain"></p>
+            </div>
+            <div class="retake-stage">
+                <div class="cell cell-static" id="retakeOldCell">
+                    <span class="cell-letter"></span>
+                    <span class="cell-name"></span>
+                    <span class="cell-note"></span>
+                </div>
+                <span class="retake-arrow" aria-hidden="true">&rarr;</span>
+                <div class="cell cell-static" id="retakeNewCell">
+                    <span class="cell-letter"></span>
+                    <span class="cell-name"></span>
+                    <span class="cell-note"></span>
+                </div>
+                <div class="retake-caption"><span>Earlier semester</span><span></span><span>Retake semester</span></div>
+            </div>
+        </div>
+        <ul class="rule-list">
+            <li><strong>Higher or equal retake:</strong> the old grade is replaced with R. The new grade is used for the CGPA through its own semester. The SGPA and CGPA already recorded for the earlier semester do not change.</li>
+            <li><strong>Lower retake:</strong> the old grade stays, and the new attempt is recorded as W, so it affects nothing.</li>
+            <li><strong>Substitute elective:</strong> a failed elective replaced by a different one, with the Dean's approval, becomes R in the same way.</li>
+        </ul>
+    </section>
+
+    <!-- The other rules the calculator applies -->
+    <section class="policy-block" aria-labelledby="otherHeading">
+        <div class="view-head">
+            <div>
+                <h2 id="otherHeading">Standing, honours and limits</h2>
+                <p>The calculator checks these after each semester and flags them on the matrix.</p>
+            </div>
+        </div>
+        <div class="steps">
+            <article class="step">
+                <span class="step-number">!</span>
+                <h3>Academic deficiency</h3>
+                <ul>
+                    <li>A minimum CGPA of 2.0 must be kept throughout.</li>
+                    <li>After a regular semester, a CGPA below 2.0 adds one probation. Reaching 2.0 again clears the count.</li>
+                    <li>Three probations in a row mean relegation: only repeatable courses can be registered until the CGPA is back to 2.0.</li>
+                    <li>First semester: a GPA below 1.0 means dismissal. From 1.0 to below 1.5 is a serious warning, and the next semester GPA must reach 2.0.</li>
+                </ul>
+            </article>
+            <article class="step">
+                <span class="step-number">&#9733;</span>
+                <h3>Honours</h3>
+                <ul>
+                    <li><strong>Vice Chancellor's List:</strong> SGPA of 3.7 or more in a regular semester, with no repeated course.</li>
+                    <li><strong>Dean's List:</strong> SGPA of 3.5 or more in a regular semester, with no repeated course.</li>
+                    <li><strong>Gold medals:</strong> the highest CGPA in the batch and at least 3.5, grade C or above in every course, and no repeated course, withdrawal or I grade.</li>
+                </ul>
+            </article>
+            <article class="step">
+                <span class="step-number">#</span>
+                <h3>Credit hours and special cases</h3>
+                <ul>
+                    <li>A regular semester is 9 to 18 credit hours, or up to 21 with approval when that completes the degree. A summer session is at most 8.</li>
+                    <li><strong>W:</strong> withdrawal, or attendance below 75%. No credit, not used in SGPA or CGPA.</li>
+                    <li><strong>I:</strong> incomplete. Not used in SGPA or CGPA, and it turns into F if not completed by the end of the next regular semester.</li>
+                    <li><strong>Non-credit and transferred courses</strong> appear on the transcript but are not used in SGPA or CGPA.</li>
+                    <li><strong>Relative grading:</strong> a class of more than 20 students may be graded against the class average. Then enter the letter you were given instead of marks.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="handbook" aria-labelledby="handbookHeading">
+        <div>
+            <h2 id="handbookHeading">Official Student Handbook <span class="badge">2024 Revised</span></h2>
+            <p>Review comprehensive guidelines regarding Riphah International University (RIU) campus facilities, academic regulations, student code of conduct, and fee policies directly through official channels.</p>
+        </div>
+        <div class="actions">
             <a href="https://riphah.edu.pk/downloads/" target="_blank" rel="noopener" class="btn">Visit RIU Website</a>
+            <a href="index.html" class="btn btn-ghost">Back to the matrix</a>
         </div>
-
-            <div class="sidebar-card">
-                <h2>Quick Links</h2>
-                <a href="index.html" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center;">&lt;- Back to CGPA Calculator</a>
-            </div>
-        </div>
-    </div>
+    </section>
+</main>
 
 <footer class="no-print site-footer">
-    <div class="footer-container">
+    <div class="container footer-inner">
         <div class="footer-main">
             <p class="footer-brand">
                 &copy; 2026 <strong>Riphah GradeMatrix</strong> &bull; SGPA & CGPA Calculation System
             </p>
-            <div class="footer-actions">
-                <p class="footer-author">
-                    Developed by <strong>Mavi</strong><br> 
-                    <a href="https://github.com/mavi-cyber/Riphah-GradeMatrix" target="_blank" class="github-pill">
-                        <img src="assets/btns/github-profile-link.png" alt="GitHub"> @mavi-cyber
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p class="footer-disclaimer">
-                Disclaimer: This independent estimation tool assists students in tracking SGPA and CGPA in accordance with <abbr title="Riphah International University">RIU</abbr> academic regulations. <br> For official records and credit mapping, always consult the Student Services Department.
+            <p class="footer-author">
+                Developed by <strong>Mavi</strong>
+                <a href="https://github.com/mavi-cyber/Riphah-GradeMatrix" target="_blank" rel="noopener" class="github-pill">
+                    <img src="assets/btns/github-profile-link.png" alt="GitHub"> @mavi-cyber
+                </a>
             </p>
         </div>
+        <p class="footer-disclaimer">
+            Disclaimer: This independent estimation tool assists students in tracking SGPA and CGPA in accordance with <abbr title="Riphah International University">RIU</abbr> academic regulations. For official records and credit mapping, always consult the Student Services Department.
+        </p>
     </div>
 </footer>
 
+<script type="module" src="js/policy.js"></script>
 </body>
 </html>

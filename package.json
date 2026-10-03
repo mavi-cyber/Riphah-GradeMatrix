@@ -1,0 +1,8 @@
+{
+  "name": "riphah-gradematrix",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
