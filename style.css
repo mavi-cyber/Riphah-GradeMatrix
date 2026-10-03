@@ -237,6 +237,15 @@ abbr[title] {
     cursor: pointer;
 }
 
+a.tab {
+    text-decoration: none;
+}
+
+/* On wide screens the Policy link sits at the right of the bar instead. */
+.policy-tab {
+    display: none;
+}
+
 .tab:hover {
     color: var(--text);
     background: var(--surface-2);
@@ -1966,6 +1975,10 @@ body.drawer-open {
 @media (max-width: 720px) {
     .brand-text small, .policy-link {
         display: none;
+    }
+
+    .policy-tab {
+        display: inline-block;
     }
 
     .tab {

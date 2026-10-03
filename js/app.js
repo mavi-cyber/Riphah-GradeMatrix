@@ -123,7 +123,7 @@ function showPanel(name) {
     $('drawerBackdrop').hidden = !open;
     document.body.classList.toggle('drawer-open', open);
     for (const id of PANELS) $(`view-${id}`).hidden = id !== name;
-    for (const tab of document.querySelectorAll('.tab')) {
+    for (const tab of document.querySelectorAll('.tab[data-view]')) {
         tab.setAttribute('aria-pressed', String(tab.dataset.view === name));
     }
     if (open) $('drawer').scrollTop = 0;
@@ -133,7 +133,7 @@ function initPanels() {
     const go = name => {
         location.hash = location.hash.slice(1) === name ? '' : name;
     };
-    for (const tab of document.querySelectorAll('.tab')) tab.addEventListener('click', () => go(tab.dataset.view));
+    for (const tab of document.querySelectorAll('.tab[data-view]')) tab.addEventListener('click', () => go(tab.dataset.view));
     $('goalChip').addEventListener('click', () => go('planner'));
     $('drawerClose').addEventListener('click', () => { location.hash = ''; });
     $('drawerBackdrop').addEventListener('click', () => { location.hash = ''; });
